@@ -1,11 +1,7 @@
 package MovieDatabase;
 //-----------------------------------------------------
-
-// Title:Movie Object Class
-// Author: Hamid Ahmadlouei-İbrahim İleri
-// ID: 10007768278
-// Section: 1
-// Assignment: 3-BinarySearchTrees
+// Title: Movie Object Class
+// Author: Bahadır Ünal
 // Description: This Class for Movie Objects and it holds movie's attributes.
 //-----------------------------------------------------
 
