@@ -3,19 +3,14 @@ package MovieDatabase;
 import java.util.ArrayList;
 import java.util.Iterator;
 //-----------------------------------------------------
-
 // Title:MovieDatabase Class
-// Author: Hamid Ahmadlouei-İbrahim İleri
-// ID: 10007768278
-// Section: 1
-// Assignment: 3-BinarySearchTrees
+// Author: Bahadır Ünal
 // Description: Create MovieDatabase with Movies and CastList.
 // Also it consist of methods which can be used for adding displaying ad deleting information.
 //-----------------------------------------------------
 public class MovieDatabase implements Iterable {
     BinarySearchTree<Movie, Integer> movieList; // release year-Movie
-    // BinarySearchTree<Movie, Actor> actorList = new BinarySearchTree<Movie, Actor>(); //Actor name-Actor
-
+  
     /**
      * Summary and Post condition:Constructor which initialize the BST for Movies.
      * Precondition: None
@@ -33,10 +28,7 @@ public class MovieDatabase implements Iterable {
     public void addMovie(String movieTitle, String directorFirstName, String directorLastName, int releaseDay, int releaseMonth, int releaseYear) {
         /**
          * Traverse the tree if we have no existing movie add it to tree, if we have, overwrites it.
-         */
-       /* for(int i=0;i<movieList.size();i++) {
-
-        }*/
+         */  
         boolean found = false;
         ArrayList<Movie> movies = movieList.keys();
         for (int i = 0; i < movies.size(); i++) {
@@ -48,14 +40,11 @@ public class MovieDatabase implements Iterable {
                 //overwrite onto it.
             }
         }
-        //else
         if (found == false) {
             Movie addedMovie = new Movie(movieTitle, directorFirstName, directorLastName, releaseDay, releaseMonth, releaseYear);
             movieList.put(addedMovie, releaseYear);
             System.out.println("INFO: Movie " + addedMovie.movieTitle + " has been added");
         }
-
-
     }
 
     /**
@@ -90,13 +79,8 @@ public class MovieDatabase implements Iterable {
      * Precondition: movieTitle,FirstName,LastName,Role of the Actor.
      */
     public void addActor(String movieTitle, String actorFirstName, String actorLastName, String actorRole) {
-        /**
-         * bütün treeyi gez o title lı film yoksa warning message ver.
-         */
-        // bu title a sahip movie yi tree de bul.
         boolean found = false;
         boolean isoverwritten = false;
-
 
         ArrayList<Movie> movies = movieList.keys();
         for (int i = 0; i < movies.size(); i++) {
@@ -114,39 +98,20 @@ public class MovieDatabase implements Iterable {
                         //System.out.println("for un içi");
                         if (actors.get(j).getFirstName().equals(addedActor.getFirstName()) && actors.get(j).getLastName().equals(addedActor.getLastName())) {
                             isoverwritten = true;
-                            //overwrite yapmıyor.
-                            // System.out.println("overwritring");//overwriting
                             movies.get(i).castList.add(addedActor, actorFirstName + " " + actorLastName);
                             System.out.println("INFO: " + actors.get(j).firstName + " " + actors.get(j).lastName + " has been overwritten the movie " + movies.get(i).movieTitle);
                         }
                     }
                     if(isoverwritten==false){
-                        // normal adding
-                        //System.out.println("normal adding");
                         movies.get(i).castList.put(addedActor, actorFirstName + " " + actorLastName);
                         System.out.println("INFO: " + actorFirstName + " " + actorLastName  + " has been added to the movie " + movies.get(i).movieTitle);
                     }
                 }
-
-
-                // movies.get(i).castList.put(actorFirstName,addedActor); // put un aldığı parametreler değişebilir.
-                //overwrite onto it.
             }
         }
         if (found == false) {
             System.out.println("INFO: Movie " + movieTitle + " does not exist");
-            // give warning message.
-
         }
-        /*Movie searchedmovieWithSpeciefedTitle = new Movie(movieTitle);
-        if (movieList.search(searchedmovieWithSpeciefedTitle) == null) {
-            Actor addedActor = new Actor(actorFirstName, actorLastName, movieTitle, actorRole);
-            //actorList.put(searchedmovieWithSpecifiedTitle,addedActor);
-            searchedmovieWithSpeciefedTitle.castList.put(actorFirstName, addedActor);
-            System.out.println("INFO: " + addedActor.firstName + " " + addedActor.lastName + " has been added to the movie " + searchedmovieWithSpeciefedTitle.movieTitle);
-        } else {
-            System.out.println("INFO: Movie " + searchedmovieWithSpeciefedTitle.movieTitle + " does not exist");
-        }*/
     }
 
     /**
@@ -183,13 +148,9 @@ public class MovieDatabase implements Iterable {
                 }
             }
         }
-        /*if (foundactor == false) {
-            System.out.println("There is no actor with this name in this movies' cast.");
-        }*/
         if (found == false) {
             System.out.println("You cannot remove the non-existing Movies Actor.");
         }
-
     }
 
     /**
@@ -228,10 +189,9 @@ public class MovieDatabase implements Iterable {
                 System.out.println(movies.get(i).movieTitle);
                 System.out.println(movies.get(i).day + "/" + movies.get(i).month + "/" + movies.get(i).year);
                 System.out.println(movies.get(i).firstNameDirector + " " + movies.get(i).lastNameDirector);
+                
                 for (int j = 0; j < actors.size(); j++) {
-
                     System.out.println(actors.get(j).getFirstName() + " " + actors.get(j).getLastName() + ", " + actors.get(j).getRoleTitle());
-
                 }
             }
         }
@@ -279,13 +239,11 @@ public class MovieDatabase implements Iterable {
      * Precondition: FirstName,LastName of Director.
      */
     public void showDirectorMovies(String directorFirstName, String directorLastName) {
-        //movieleri directorlarına göre ara -add actorle benzer.
-        // Orada actorleri movie titlelarına göre arıyorduk.
         boolean found = false;
         System.out.println();
         ArrayList<Movie> movies = movieList.keys();
         System.out.println(directorFirstName + " " + directorLastName);
-        for (int i = movies.size()-1; i >= 0; i--) {//Arrayliste dizdiğim için tersten okuyunca descending oldu.
+        for (int i = movies.size()-1; i >= 0; i--) { 
             if (movies.get(i).getFirstNameDirector().equals(directorFirstName) && movies.get(i).getLastNameDirector().equals(directorLastName)) {
                 found = true;
                 System.out.println(movies.get(i).movieTitle + ", " + movies.get(i).day + "/" + movies.get(i).month + "/" + movies.get(i).year);
@@ -304,7 +262,7 @@ public class MovieDatabase implements Iterable {
      * Precondition: releaseYear of Intended Movies.
      */
     public void showMovies(int releaseYear) {
-        // bst de release year olarak sakladığımız için direkt traverse edicez.
+        
         boolean found = false;
         System.out.println();
         ArrayList<Movie> movies = movieList.keys();
@@ -327,7 +285,7 @@ public class MovieDatabase implements Iterable {
      * Precondition: startYear-endYear of Intended Movies.
      */
     public void showMovies(int startYear, int endYear) {
-        // 2 aralık arasında kalanları yazdırıcaz.
+        
         boolean found = false;
         System.out.println();
         ArrayList<Movie> movies = movieList.keys();
@@ -338,18 +296,11 @@ public class MovieDatabase implements Iterable {
                 found = true;
                 System.out.println(movies.get(i).movieTitle + ", " + movies.get(i).firstNameDirector + " " + movies.get(i).lastNameDirector + ", " + movies.get(i).year);
             }
-
-
+            
         }
         if (found == false) {
             System.out.println("---none---");
         }
         System.out.println();
-    }
-
-
-    @Override
-    public Iterator iterator() {
-        return null;
     }
 }
