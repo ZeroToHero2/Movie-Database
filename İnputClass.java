@@ -1,13 +1,8 @@
 package MovieDatabase;
 //-----------------------------------------------------
-
-// Title: Given(Intended) Input Class
-// Author: Hamid Ahmadlouei-İbrahim İleri
-// ID: 10007768278
-// Section: 1
-// Assignment: 3-BinarySearchTrees
-// Description: (You can easily check intended outputs there.)
-// README: I added -"Kasımda Aşk Başkadır", "Stanley", "Kubrick" -for trial.It's not in actual inputs.
+// Title: Tester Class
+// Author: Bahadır Ünal
+// Description: (You can easily check sample outputs there.)
 //-----------------------------------------------------
 public class İnputClass {
     public static void main(String[] args) {
