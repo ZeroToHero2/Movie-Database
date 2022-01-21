@@ -3,10 +3,7 @@ package MovieDatabase;
 import java.util.ArrayList;
 //-----------------------------------------------------
 // Title:My generic BinarySearchTree class
-// Author: Hamid Ahmadlouei-İbrahim İleri
-// ID: 10007768278
-// Section: 1
-// Assignment: 3-BinarySearchTrees
+// Author: Bahadır Ünal
 // Description:  This generic class initialize empty "BinarySearch Tree"
 // and defines the "BinarySearch Tree" abilities which are put,delete,size,inorder traversal,print etc..
 // Additionally I append my personal methods into it in order to ensure functionality for my project.
@@ -14,7 +11,7 @@ import java.util.ArrayList;
 
 public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     private Node root;
-
+    
     /**
      * Summary and Post condition:Private Inner Class for Node Objects which we will use for constructing out BST.
      * Precondition: None
@@ -31,14 +28,14 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         }
     }
     /**
-     * I will make explanation below in the actual put method:
+     *  Explanation below in the actual "add" method:
      */
     public void put(Key key, Value val) {
         root = put(root, key, val);
 
     }
     /**
-     *  I will make explanation below in the actual "add" method:
+     *   Explanation below in the actual "add" method:
      */
     public void add(Key key, Value val) {
         root = add(root, key, val);
@@ -62,10 +59,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         x.count = 1 + size(x.left) + size(x.right);
         return x;
     }
-    /*else if (cmp > 0)
-            x.right = put(x.right, key, val);
-        else if (cmp == 0) // equal ı greeater ile aynı yap. else deyip tek if te birlşetir.
-            x.val = val;*/
+  
     /**
      * Summary and Post condition:This method for Adding Node's into the BST.Important aspect of it is adding greater values
      * (surely in terms of their compareTo method) store the right of the current node.Likewise, it store the smaller values in the left of the current node.
@@ -156,45 +150,6 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         x.count = 1 + size(x.left) + size(x.right);
         return x;
     }
-   /*public Node search(Key key)  {
-        root.val = search_Recursive(root, key); // root.val ları root yap.
-        if (root!= null)
-            return root;
-        else
-            return null;
-    }
-    /**
-     * Summary and Post condition:Private Inner Class for Node Objects which we will use for constructing out BST.
-     * Precondition: None
-     */
-    //recursive insert function
-    /*
-    private Value search_Recursive(Node root, Key key)  {
-        // Base Cases: root is null or key is present at root
-        if (root==null || root.key==key)
-            return root.val;
-        // val is greater than root's key
-        if (root.key.compareTo(key)>0)
-            return search_Recursive(root.left, key);
-        // val is less than root's key
-        return search_Recursive(root.right, key);
-    }
-    public void inorder() {
-        inorder_Recursive(root);
-    }
-    /**
-     * Summary and Post condition:
-     * Precondition: None
-     */
-    // recursively traverse the BST
-    /*
-    public void inorder_Recursive(Node root) {
-        if (root != null) {
-            inorder_Recursive(root.left);
-            System.out.print(root.key + " ");
-            inorder_Recursive(root.right);
-        }
-    }*/
     /**
      * Summary and Post condition:The one of the most important methods in mt BST. It finds the all keys in the current BST.
      * and add it them into ArrayList(this is my personal design decision) the return the ArrayList.
