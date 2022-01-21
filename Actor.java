@@ -1,14 +1,8 @@
 package MovieDatabase;
 //-----------------------------------------------------
-
 // Title:Actor Object Class
-// Author: Hamid Ahmadlouei-İbrahim İleri
-// ID: 10007768278
-// Section: 1
-// Assignment: 3-BinarySearchTrees
 // Description: This Class for Actor Objects and it holds actor's attributes.
 //-----------------------------------------------------
-
 public class Actor implements Comparable<Actor> {
     public String firstName, lastName, movieTitle, roleTitle;
 
@@ -21,7 +15,6 @@ public class Actor implements Comparable<Actor> {
         this.movieTitle = movieTitle;
         this.roleTitle = roleTitle;
     }
-
     /**
      * Getter Setter Methods for Actor Object.
      * @return
